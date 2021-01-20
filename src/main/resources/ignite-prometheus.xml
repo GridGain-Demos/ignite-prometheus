@@ -1,0 +1,24 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="grid.cfg" class="org.apache.ignite.configuration.IgniteConfiguration">
+
+        <property name="lifecycleBeans">
+            <list>
+                <bean class="com.gridgain.ecosystem.prometheus.Exporter">
+                    <constructor-arg value="9000"/>
+                </bean>
+            </list>
+        </property>
+
+        <property name="metricExporterSpi">
+            <list>
+                <bean class="org.apache.ignite.spi.metric.opencensus.OpenCensusMetricExporterSpi"/>
+            </list>
+        </property>
+
+    </bean>
+</beans>
