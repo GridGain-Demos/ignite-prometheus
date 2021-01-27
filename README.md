@@ -1,4 +1,4 @@
-# Viewing GridGain metrics in Prometheus
+# Viewing Apache Ignite and GridGain metrics in Prometheus
 ## Overview
 
 [Prometheus](https://prometheus.io/) is a popular monitoring tool supported
