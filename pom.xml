@@ -11,47 +11,15 @@
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
-        <gridgain.version>8.8.1</gridgain.version>
         <opencensus.version>0.22.0</opencensus.version>
     </properties>
 
-    <repositories>
-        <repository>
-            <id>GridGain External Repository</id>
-            <url>http://www.gridgainsystems.com/nexus/content/repositories/external</url>
-        </repository>
-    </repositories>
-
     <dependencies>
-        <!-- GG CE / Apache Ignite -->
-        <dependency>
-            <groupId>org.gridgain</groupId>
-            <artifactId>ignite-core</artifactId>
-            <version>${gridgain.version}</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.gridgain</groupId>
-            <artifactId>ignite-indexing</artifactId>
-            <version>${gridgain.version}</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.gridgain</groupId>
-            <artifactId>ignite-spring</artifactId>
-            <version>${gridgain.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.gridgain</groupId>
-            <artifactId>ignite-opencensus</artifactId>
-            <version>${gridgain.version}</version>
-        </dependency>
         <dependency>
             <groupId>io.opencensus</groupId>
             <artifactId>opencensus-api</artifactId>
             <version>${opencensus.version}</version>
         </dependency>
-
         <dependency>
             <groupId>io.opencensus</groupId>
             <artifactId>opencensus-impl</artifactId>

@@ -18,13 +18,14 @@ worth checking.)
 
 ## Building
 
-Build a copy of the "exporter":
+Build a copy of the required libraries:
 
 ```shell
 mvn package
 ```
 
-This is the code that links the Open Census metrics with Prometheus.
+This module is not strictly necessary. You can "manually" create the list of dependent JAR files. I found
+this easier.
 
 ## Running
 

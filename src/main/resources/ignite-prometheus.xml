@@ -5,20 +5,24 @@ http://www.springframework.org/schema/beans
 http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <bean id="grid.cfg" class="org.apache.ignite.configuration.IgniteConfiguration">
-
-        <property name="lifecycleBeans">
+        <property name="metricsUpdateFrequency" value="1000"/>
+        <property name="metricExporterSpi">
             <list>
-                <bean class="com.gridgain.ecosystem.prometheus.Exporter">
-                    <constructor-arg value="9000"/>
+                <bean class="org.apache.ignite.spi.metric.opencensus.OpenCensusMetricExporterSpi">
+                    <property name="period" value="1000" />
                 </bean>
             </list>
         </property>
-
-        <property name="metricExporterSpi">
-            <list>
-                <bean class="org.apache.ignite.spi.metric.opencensus.OpenCensusMetricExporterSpi"/>
-            </list>
-        </property>
-
     </bean>
+
+    <bean id="opencensusWrapper" class="org.springframework.beans.factory.config.MethodInvokingBean">
+        <property name="staticMethod" value="io.opencensus.exporter.stats.prometheus.PrometheusStatsCollector.createAndRegister"/>
+    </bean>
+
+    <bean id="httpServer" class="io.prometheus.client.exporter.HTTPServer">
+        <constructor-arg type="java.lang.String" value="localhost"/>
+        <constructor-arg type="int" value="9000"/>
+        <constructor-arg type="boolean" value="true"/>
+    </bean>
+
 </beans>
